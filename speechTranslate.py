@@ -1,17 +1,20 @@
-url = "https://api.eu-de.text-to-speech.watson.cloud.ibm.com/text-to-speech/api"
-api = 'ex6tPxJ0Z2OksHtO3Lt6bxzn7gPSeuFBj3yBeNc-j1TJ'
-
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+import json
 
-authenticator = IAMAuthenticator(api)
+url = ''
+apikey = ''
+
+authenticator = IAMAuthenticator(apikey)
 language_translator = LanguageTranslatorV3(
     version='2020-08-25',
     authenticator=authenticator
 )
 
-language_translator.set_service_url('https://api.us-east.language-translator.watson.cloud.ibm.com')
-language_translator.set_disable_ssl_verification(True)
+language_translator.set_service_url(url)
+
+print("Enter a Sentence in English to be translated")
+text = input()
 
 from ibm_watson import ApiException
 try:
